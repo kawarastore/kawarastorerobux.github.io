@@ -25,10 +25,32 @@
             font-weight: 800;
             text-shadow: 0 0 12px rgba(255,255,255,0.35);
         }
-        header p {
-            font-size: 17px;
-            opacity: 0.9;
-            margin-top: 8px;
+
+        /* ==== TAB NAVIGASI ==== */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        .tab {
+            padding: 12px 22px;
+            margin: 0 6px;
+            border-radius: 10px;
+            background: #1e2030;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+            text-decoration: none;
+            color: #fff;
+        }
+        .tab:hover {
+            background: #34364a;
+        }
+
+        /* highlight tab aktif */
+        .active {
+            background: #5c7bff;
+            box-shadow: 0 0 15px rgba(92,123,255,0.4);
         }
 
         .container {
@@ -43,11 +65,6 @@
             padding: 28px;
             margin-bottom: 30px;
             box-shadow: 0 0 25px rgba(0,0,0,0.45);
-            border: 1px solid rgba(255,255,255,0.07);
-            backdrop-filter: blur(4px);
-            transition: 0.25s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .card h2 {
@@ -55,45 +72,30 @@
             margin-bottom: 15px;
             color: #9db3ff;
             font-size: 23px;
-            text-shadow: 0 0 6px rgba(157,179,255,0.4);
         }
 
         .card ul {
             padding-left: 20px;
             line-height: 1.8;
         }
+
         .card li {
             margin-bottom: 7px;
             font-size: 15.5px;
         }
 
-        .buttons {
-            text-align: center;
-            margin: 45px 0;
+        /* ==== HALAMAN GAMEPASS ==== */
+        .gamepass-table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .btn {
-            display: inline-block;
-            padding: 14px 26px;
-            margin: 8px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #5c7bff, #8a52ff);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.25s;
-            box-shadow: 0 0 15px rgba(110,130,255,0.3);
+        .gamepass-table th, .gamepass-table td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
         }
-        .btn:hover {
-            background: linear-gradient(135deg, #6f8cff, #9c63ff);
-            box-shadow: 0 0 22px rgba(110,130,255,0.5);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            opacity: 0.65;
-            font-size: 15px;
-            margin-top: 40px;
+        .gamepass-table th {
+            text-align: left;
+            color: #9db3ff;
         }
     </style>
 </head>
@@ -104,50 +106,101 @@
         <p>Pricelist Top Up Robux • Via Gamepass</p>
     </header>
 
+    <!-- NAV TAB -->
+    <div class="tabs">
+        <a href="#" class="tab active" onclick="showTab('pricelist')">💰 Pricelist</a>
+        <a href="#" class="tab" onclick="showTab('gamepass')">🛠 Nominal Gamepass</a>
+    </div>
+
     <div class="container">
 
-        <section class="card">
-            <h2>💎 ROBUX 100 – 800</h2>
-            <ul>
-                <li>100 ROBUX — <b>Rp 10.500</b></li>
-                <li>200 ROBUX — <b>Rp 21.000</b></li>
-                <li>300 ROBUX — <b>Rp 31.500</b></li>
-                <li>400 ROBUX — <b>Rp 42.000</b></li>
-                <li>500 ROBUX — <b>Rp 52.500</b></li>
-                <li>600 ROBUX — <b>Rp 63.000</b></li>
-                <li>700 ROBUX — <b>Rp 73.500</b></li>
-                <li>800 ROBUX — <b>Rp 84.000</b></li>
-            </ul>
-        </section>
+        <!-- ==== TAB PRICELIST ==== -->
+        <div id="pricelist" class="tabcontent">
 
-        <section class="card">
-            <h2>💰 ROBUX 900 – 5500</h2>
-            <ul>
-                <li>900 ROBUX — <b>Rp 89.775</b></li>
-                <li>1000 ROBUX — <b>Rp 99.750</b></li>
-                <li>1500 ROBUX — <b>Rp 149.625</b></li>
-                <li>2000 ROBUX — <b>Rp 199.500</b></li>
-                <li>2500 ROBUX — <b>Rp 249.375</b></li>
-                <li>3000 ROBUX — <b>Rp 299.250</b></li>
-                <li>3500 ROBUX — <b>Rp 349.125</b></li>
-                <li>4000 ROBUX — <b>Rp 399.000</b></li>
-                <li>4500 ROBUX — <b>Rp 448.875</b></li>
-                <li>5000 ROBUX — <b>Rp 498.750</b></li>
-                <li>5500 ROBUX — <b>Rp 548.625</b></li>
-            </ul>
-        </section>
+            <section class="card">
+                <h2>💎 ROBUX 100 – 800</h2>
+                <ul>
+                    <li>100 ROBUX — <b>Rp 10.500</b></li>
+                    <li>200 ROBUX — <b>Rp 21.000</b></li>
+                    <li>300 ROBUX — <b>Rp 31.500</b></li>
+                    <li>400 ROBUX — <b>Rp 42.000</b></li>
+                    <li>500 ROBUX — <b>Rp 52.500</b></li>
+                    <li>600 ROBUX — <b>Rp 63.000</b></li>
+                    <li>700 ROBUX — <b>Rp 73.500</b></li>
+                    <li>800 ROBUX — <b>Rp 84.000</b></li>
+                </ul>
+            </section>
 
-        <div class="buttons">
-            <a class="btn" href="https://wa.link/qtrqze" target="_blank">📞 Hubungi Admin</a>
-            <a class="btn" href="https://whatsapp.com/channel/0029VbByiYDHLHQdvmWm1s44" target="_blank">📄 Testimoni</a>
-            <a class="btn" href="https://kawarastore.github.io/kawarastoreberanda.github.io/">🏠 Kembali ke Beranda</a>
+            <section class="card">
+                <h2>💰 ROBUX 900 – 5500</h2>
+                <ul>
+                    <li>900 ROBUX — <b>Rp 89.775</b></li>
+                    <li>1000 ROBUX — <b>Rp 99.750</b></li>
+                    <li>1500 ROBUX — <b>Rp 149.625</b></li>
+                    <li>2000 ROBUX — <b>Rp 199.500</b></li>
+                    <li>2500 ROBUX — <b>Rp 249.375</b></li>
+                    <li>3000 ROBUX — <b>Rp 299.250</b></li>
+                    <li>3500 ROBUX — <b>Rp 349.125</b></li>
+                    <li>4000 ROBUX — <b>Rp 399.000</b></li>
+                    <li>4500 ROBUX — <b>Rp 448.875</b></li>
+                    <li>5000 ROBUX — <b>Rp 498.750</b></li>
+                    <li>5500 ROBUX — <b>Rp 548.625</b></li>
+                </ul>
+            </section>
+
+        </div>
+
+        <!-- ==== TAB NOMINAL GAMEPASS ==== -->
+        <div id="gamepass" class="tabcontent" style="display:none;">
+
+            <section class="card">
+                <h2>🛠 Nominal Gamepass (Setelah Pajak 30%)</h2>
+                <p>Player harus membuat gamepass dengan nominal berikut biar Robux masuk PAS:</p>
+
+                <table class="gamepass-table">
+                    <tr>
+                        <th>Robux yang Dibeli</th>
+                        <th>Nominal Gamepass</th>
+                    </tr>
+
+                    <!-- DATA OTOMATIS HITUNG ROBUX / 0.7 -->
+                    <tr><td>100 Robux</td><td><b>143</b></td></tr>
+                    <tr><td>200 Robux</td><td><b>286</b></td></tr>
+                    <tr><td>300 Robux</td><td><b>429</b></td></tr>
+                    <tr><td>400 Robux</td><td><b>572</b></td></tr>
+                    <tr><td>500 Robux</td><td><b>715</b></td></tr>
+                    <tr><td>600 Robux</td><td><b>858</b></td></tr>
+                    <tr><td>700 Robux</td><td><b>1001</b></td></tr>
+                    <tr><td>800 Robux</td><td><b>1143</b></td></tr>
+                    <tr><td>900 Robux</td><td><b>1286</b></td></tr>
+                    <tr><td>1000 Robux</td><td><b>1429</b></td></tr>
+                    <tr><td>1500 Robux</td><td><b>2143</b></td></tr>
+                    <tr><td>2000 Robux</td><td><b>2857</b></td></tr>
+                    <tr><td>2500 Robux</td><td><b>3571</b></td></tr>
+                    <tr><td>3000 Robux</td><td><b>4286</b></td></tr>
+                    <tr><td>3500 Robux</td><td><b>5000</b></td></tr>
+                    <tr><td>4000 Robux</td><td><b>5714</b></td></tr>
+                    <tr><td>4500 Robux</td><td><b>6429</b></td></tr>
+                    <tr><td>5000 Robux</td><td><b>7143</b></td></tr>
+                    <tr><td>5500 Robux</td><td><b>7857</b></td></tr>
+
+                </table>
+            </section>
+
         </div>
 
     </div>
 
-    <footer>
-        <p>© Kawara Store 2025</p>
-    </footer>
+    <script>
+        function showTab(name) {
+            document.querySelectorAll(".tabcontent").forEach(t => t.style.display = "none");
+            document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+            document.getElementById(name).style.display = "block";
+
+            if (name === "pricelist") document.querySelectorAll(".tab")[0].classList.add("active");
+            if (name === "gamepass") document.querySelectorAll(".tab")[1].classList.add("active");
+        }
+    </script>
 
 </body>
 </html>
